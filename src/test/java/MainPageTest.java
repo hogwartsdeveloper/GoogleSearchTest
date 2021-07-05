@@ -1,5 +1,7 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -26,4 +28,12 @@ public class MainPageTest {
     public void tearDown() {
         driver.quit();
     }
+
+    @Test
+    public void checkSearch() {
+        ResultSearchPage resultSearchPage = mainPage.search("java_love");
+        String search = resultSearchPage.checkResult();
+        Assert.assertEquals("Результатов: примерно", search);
+    }
+
 }

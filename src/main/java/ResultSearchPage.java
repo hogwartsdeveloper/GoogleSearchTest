@@ -12,9 +12,16 @@ public class ResultSearchPage {
     }
 
     @FindBy(xpath = "//div[@eid='htHhYP-zLaHKlAa885SADQ']/div")
-    private List<WebElement> resultList;
+    private WebElement notResult;
 
-    public int checkResult() {
-        return resultList.size();
+    @FindBy(xpath = "//div[@id='result-stats']")
+    private WebElement result;
+
+    public String checkNoResult() {
+        return notResult.getText();
+    }
+
+    public String checkResult() {
+        return result.getText().substring(0, 21);
     }
 }
