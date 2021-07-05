@@ -57,11 +57,13 @@ public class MainPage {
 
     public MailPage clickGmail() {
         gmailLink.click();
-        return new MailPage(driver);
+        MailPage mailPage = PageFactory.initElements(driver, MailPage.class);
+        return mailPage;
     }
 
     public ImagePage clickImage() {
         imagesLink.click();
-        return new ImagePage(driver);
+        ImagePage imagePage = PageFactory.initElements(driver, ImagePage.class);
+        return imagePage;
     }
 }

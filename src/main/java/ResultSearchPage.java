@@ -11,7 +11,7 @@ public class ResultSearchPage {
         this.driver = driver;
     }
 
-    @FindBy(xpath = "//div[@eid='htHhYP-zLaHKlAa885SADQ']/div")
+    @FindBy(xpath = "//p[@role='heading']")
     private WebElement notResult;
 
     @FindBy(xpath = "//div[@id='result-stats']")

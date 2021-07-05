@@ -30,10 +30,39 @@ public class MainPageTest {
     }
 
     @Test
-    public void checkSearch() {
+    public void checkSearchTest() {
         ResultSearchPage resultSearchPage = mainPage.search("java_love");
-        String search = resultSearchPage.checkResult();
-        Assert.assertEquals("Результатов: примерно", search);
+        String searchResult = resultSearchPage.checkResult();
+        Assert.assertEquals("Результатов: примерно", searchResult);
     }
 
+    @Test
+    public void checkIncorrectSearchTest() {
+        ResultSearchPage resultSearchPage = mainPage.search("#@$@#$$#$");
+        String searchResult = resultSearchPage.checkNoResult();
+        Assert.assertNotEquals("Результатов: примерно", searchResult);
+    }
+
+    @Test
+    public void checkSearchPresentationTest() {
+        int sizePresentation = mainPage.searchPresentation("One Piece");
+        Assert.assertEquals(10, sizePresentation);
+    }
+    @Test
+    public void checkIncorrectSearchPresentationTest() {
+        int sizePresentation = mainPage.searchPresentation("порно");
+        Assert.assertEquals(0, sizePresentation);
+    }
+
+    @Test
+    public void checkGmailLink() {
+        MailPage mailPage = mainPage.clickGmail();
+        Assert.assertEquals("Успевайте больше с почтой Gmail", mailPage.getHeading());
+    }
+
+    @Test
+    public void checkImageLink() {
+        ImagePage imagePage = mainPage.clickImage();
+        Assert.assertEquals("Картинки", imagePage.getHeading());
+    }
 }
